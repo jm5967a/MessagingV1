@@ -1,9 +1,9 @@
-export default (state = {}, action) => {
+export default (state = [], action) => {
     switch (action.type){
         case 'SET-MESSAGES':
             return action.messages;
         case 'LOGOUT':
-            return {};
+            return [];
         default:
             return state;
     }

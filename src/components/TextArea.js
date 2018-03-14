@@ -1,6 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect} from "react-redux";
 import {Message} from "./Message";
+import {startAddMessage} from "../actions/messages";
 
 export class TextArea extends React.Component {
     state = {
@@ -19,6 +20,7 @@ export class TextArea extends React.Component {
         this.setState(()=>({
             input:""
         }));
+        this.props.dispatch(startAddMessage({body: message, destination: this.props.number}));
         console.log(`Submitted ${message}`)
     };
 
@@ -44,10 +46,8 @@ export class TextArea extends React.Component {
     }
 }
 
-const mapStateToProps = (state)=> ({
-    messages: state.messages
+const mapStateToProps = (state) => ({
+    filters: state.filters
 });
 
-
 export default connect(mapStateToProps)(TextArea);
-
