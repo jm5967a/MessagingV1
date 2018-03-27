@@ -41,14 +41,54 @@
   @media (min-width: $desktop-breakpoint) {
     margin-top: 2rem;
   }
+}
+
+.message-box-new-message-box {
+  display: flex;
+  flex-grow: 3;
+  box-sizing: border-box;
+  word-break: break-all;
+  word-wrap: break-word;
+  max-width: 100%;
+
+  @media (min-width: $desktop-breakpoint) {
+    flex-grow: 9;
+  }
+}
+
+.message-box-new-message-phone {
+  border: black solid 1px;
+  box-sizing: border-box;
+  display: flex;
+  font-size: 5vw;
+  width: 100%;
+
+  @media (min-width: $desktop-breakpoint) {
+    font-size: 2rem;
+
+  }
+}
+
+.message-box-new-message-text {
+  border: black solid 1px;
+  display: flex;
+  flex-grow: 1;
+  font-size: 5vw;
+  resize: none;
+  width: 100%;
+  word-break: normal;
+
+  @media (min-width: $desktop-breakpoint) {
+    font-size: 2rem;
+
+  }
 
 }
 
 .message-box--send-button {
   display: flex;
   flex-direction: column;
-
-
+  word-break: normal;
 }
 
 .message-box--message {
@@ -61,8 +101,6 @@
   max-width: 45%;
   width: auto;
   word-wrap: break-word;
-
-
 }
 
 .message-box--message-outgoing {
@@ -76,6 +114,4 @@
   background: #3a426d;
   margin-right: auto;
   color: white;
-
-
 }

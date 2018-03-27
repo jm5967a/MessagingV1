@@ -20,10 +20,15 @@ export const addMessage = (message) => {
 
 const contactWatch = () => {
     return (dispatch, getState) => {
-        let flag = 0;
+        let initialDataLoaded = false;
         const uid = getState().auth.uid;
-        database.ref(`users/${uid}/messages/`).limitToLast(1).on('child_added', () => {
-            flag === 0 ? flag = 1 : dispatch(startSetup());
+        database.ref(`users/${uid}/messages/`).on('child_added', () => {
+            if (initialDataLoaded) {
+                dispatch(startSetup(1));
+            }
+        });
+        database.ref(`users/${uid}/messages/`).once('value', (snapshot) => {
+            initialDataLoaded = true;
         });
     }
 };
@@ -49,16 +54,23 @@ const setMessages = (messages) => ({
 });
 
 
-export const startAddMessage = ({body, createdAt = moment.now(), type = "outgoing", source, destination, sentFlag = false}) => {
+export const startAddMessage = ({
+                                    body,
+                                    createdAt = moment.now(),
+                                    type = "outgoing",
+                                    source,
+                                    destination,
+                                    sentFlag = false
+                                }
+) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        console.log(body);
         return database.ref(`users/${uid}/messages/${destination}`)
             .push({body, createdAt, type, destination, sentFlag})
     }
 };
 
-export const startSetup = () => {
+export const startSetup = (flag = 0) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         return database.ref(`users/${uid}/messages`).once('value').then((snapshot) => {
@@ -89,7 +101,7 @@ export const startSetup = () => {
             dispatch(startSetContact(contactsArray));
             dispatch(setMessages(mainArray));
             dispatch(databaseWatch());
-            dispatch(contactWatch());
+            flag === 0 && dispatch(contactWatch());
         })
     };
 };

@@ -28,11 +28,12 @@
   text-decoration: none;
   height: 100%;
   margin: auto;
+  flex-grow: 1;
   &:hover {
     background: lighten($blue, 10%);
   }
 
   @media (min-width: $desktop-breakpoint) {
-    padding: 2rem;
+    padding: 0 2rem;
   }
 }

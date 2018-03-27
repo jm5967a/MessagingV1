@@ -8,3 +8,16 @@
   //position: fixed;
   //z-index: -1;
 }
+
+.contact-bar-button {
+  background: $blue;
+  border: none;
+  color: white;
+  display: inline-block;
+  font-size: $font-size-large;
+  font-weight: 300;
+  line-height: 1;
+  padding: $s-size;
+  text-decoration: none;
+
+}
