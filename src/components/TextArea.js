@@ -2,6 +2,7 @@ import React from 'react';
 import {Message} from "./Message";
 import MessageInput from "./MessageInput";
 
+
 export const TextArea = (props) => {
         return (
             <div className={"message-box"}>
@@ -14,4 +15,3 @@ export const TextArea = (props) => {
             </div>
         );
 };
-
