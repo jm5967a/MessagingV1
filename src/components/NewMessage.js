@@ -16,7 +16,6 @@ export class NewMessage extends React.Component {
             number: ""
         }));
         this.props.dispatch(startAddMessage({body: message, destination: this.state.number})).then(() => {
-            // history.push(`/${this.props.contacts.id}`);
             const contact = this.props.contacts;
             for (let i = 0; i < contact.length; i++) {
                 if (contact[i].number === number) {

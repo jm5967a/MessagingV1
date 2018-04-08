@@ -7,7 +7,6 @@ export class MessageInput extends React.Component {
     state = {
         input: ""
     };
-
     handleChange = (e) => {
         const input = e.target.value;
         this.setState(() => ({

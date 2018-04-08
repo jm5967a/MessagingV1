@@ -8,7 +8,7 @@ import {TextArea} from './TextArea';
 
 export class DashboardPage extends React.Component {
     state = {
-        modal: false
+        modal: false,
     };
 
     pathCheck = () => {
@@ -26,13 +26,14 @@ export class DashboardPage extends React.Component {
 
     closeModal = () => {
         this.setState(() => ({
-            modal: false
+            modal: false,
         }));
         this.props.history.push('/');
     };
 
     componentWillMount() {
         this.pathCheck();
+
     }
 
     render() {
@@ -40,8 +41,9 @@ export class DashboardPage extends React.Component {
             <div className={'box-layout__dashboard'}>
                 <ContactBar/>
                 {this.state.modal && <NewMessage modal={this.state.modal} handleClose={this.closeModal}/>}
-                {(this.props.messages.length === 0 || this.props.messages.length === undefined)
-                    ? <p className={"message-box"}>No Messages</p> : <TextArea messages={this.props.messages[0].message}
+                {(this.props.messages.length === 0 || this.props.messages[0] === undefined)
+                    ? <p className={"message-box"}>No Messages yet!</p> :
+                    <TextArea messages={this.props.messages[0].message}
                                                                                number={this.props.messages[0].number}/>}
             </div>
         )
