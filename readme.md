@@ -11,5 +11,6 @@ Send and Receive Messages!<br /><br />
 Build Dev Environment: <br /> 
 Install Packages <br />
 &nbsp;&nbsp;&nbsp;&nbsp;Yarn Install <br />
+Launch Dev server
 &nbsp;&nbsp;&nbsp;&nbsp;yarn run dev-server
 
